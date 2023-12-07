@@ -14,8 +14,7 @@ public class CommandLineTool {
 		    	BufferedReader br = new BufferedReader(isr)) {
 			System.out.println("Data analysis command line >");
 			String commandLine = br.readLine();
-			System.out.println("The output is " + commandLine);
-			cli.redirect();
+			cli.execute(commandLine);
 		    	
 		 } 	
 		 catch (IOException e) {

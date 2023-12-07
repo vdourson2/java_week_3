@@ -35,8 +35,9 @@ public class Cli {
 		 }
 	}//End constructor Cli
 	
-	public void redirect() {
-		System.out.println("redirect");
+	public void execute(String commandLine) {
+		ParseCommand parsedCommand =  new ParseCommand(commandLine);
+		System.out.println(parsedCommand);
 	}
 	
 	
