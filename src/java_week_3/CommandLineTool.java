@@ -12,10 +12,11 @@ public class CommandLineTool {
 		
 		try (InputStreamReader isr = new InputStreamReader(System.in);
 		    	BufferedReader br = new BufferedReader(isr)) {
+						
 			System.out.println("Data analysis command line >");
-			String commandLine = br.readLine();
-			cli.execute(commandLine);
-		    	
+			String inputLine = br.readLine();
+			cli.treatInput(inputLine);
+			
 		 } 	
 		 catch (IOException e) {
 			 System.out.println("Failed to read stdin : " + e);

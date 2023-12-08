@@ -9,7 +9,7 @@ import java.util.Map;
 //- a string with the command itself, 
 //- an array with the arguments of the command if there are some, 
 //- a map of the options if there are some
-public class ParseCommand {
+public class ParseInput {
 	private String command;
 	private List<String> arguments = new ArrayList<>();
 	private Map<String, String> options = new HashMap<>();
@@ -20,11 +20,13 @@ public class ParseCommand {
 			options.put("measure", "All");
 		}
 	
-	public ParseCommand(String commandLine) throws IllegalArgumentException {
+	public ParseInput(String commandLine) throws IllegalArgumentException {
 		
 		if (!commandLine.isEmpty()) {
 		
 			String[] splitCommand = commandLine.split(" ");
+			
+			//Encode command
 			this.command = splitCommand[0];
 			
 			//Encode arguments
@@ -69,6 +71,10 @@ public class ParseCommand {
 		
 		
 	}//End constructor ParseCommand
+	
+	public String getCommand() {
+		return this.command;
+	}
 	
 	public String toString() {
 		return "Command = " + this.command + ", " +

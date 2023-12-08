@@ -35,9 +35,22 @@ public class Cli {
 		 }
 	}//End constructor Cli
 	
-	public void execute(String commandLine) {
-		ParseCommand parsedCommand =  new ParseCommand(commandLine);
-		System.out.println(parsedCommand);
+	public void treatInput(String inputLine) {
+		ParseInput parsedInput =  new ParseInput(inputLine);
+		System.out.println(parsedInput);
+		
+		switch (parsedInput.getCommand()) {
+			case "monthly_total" :
+				Command command = new MonthlyCommand(parsedInput); 
+				break;
+			case "exit" :
+				return;
+			default :
+				System.out.printf("""
+								  The << %s >> command was not found.
+								  Enter << help >> to have more informations about the available commands.""", parsedInput.getCommand());
+		}
+		
 	}
 	
 	
