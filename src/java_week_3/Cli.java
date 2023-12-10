@@ -42,6 +42,7 @@ public class Cli {
 		switch (parsedInput.getCommand()) {
 			case "monthly_total" :
 				Command command = new MonthlyCommand(parsedInput); 
+				//ajouter description ici???
 				break;
 			case "exit" :
 				return;

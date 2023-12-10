@@ -1,6 +1,7 @@
 package java_week_3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,6 +75,14 @@ public class ParseInput {
 	
 	public String getCommand() {
 		return this.command;
+	}
+	
+	public List<String> getArguments(){
+		return Collections.unmodifiableList(this.arguments );
+	}
+	
+	public Map<String,String> getOptions(){
+		return Collections.unmodifiableMap(this.options);
 	}
 	
 	public String toString() {
