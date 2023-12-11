@@ -12,10 +12,12 @@ public class CommandLineTool {
 		
 		try (InputStreamReader isr = new InputStreamReader(System.in);
 		    	BufferedReader br = new BufferedReader(isr)) {
-						
-			System.out.println("Data analysis command line >");
-			String inputLine = br.readLine();
-			cli.treatInput(inputLine);
+			while (!cli.getExit().equals("exit")) {
+				System.out.println("Data analysis command line >");
+				String inputLine = br.readLine();
+				cli.treatInput(inputLine);
+			}
+			
 			
 		 } 	
 		 catch (IOException e) {

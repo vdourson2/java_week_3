@@ -12,7 +12,8 @@ import java.util.stream.Collectors;
 
 public class Cli {
 	
-	List<TradeData> allValues = new ArrayList<TradeData>();
+	private List<TradeData> allValues = new ArrayList<TradeData>();
+	private String exit = "";
 	
 	//This constructor initiate the Cli with the data contained into the csv file pathToDataFile
 	public Cli(String pathToDataFile) {
@@ -31,25 +32,41 @@ public class Cli {
 		    		  .collect(Collectors.toList());
 		 } 	
 		 catch (IOException e) {
-			 System.out.println("Loading failed" + e);
+			 System.out.println("Loading of the file failed" + e);
 		 }
 	}//End constructor Cli
 	
+	public String getExit() {
+		return this.exit;
+	}
+	
+	//This method parse the commandline and execute the command
 	public void treatInput(String inputLine) {
-		ParseInput parsedInput =  new ParseInput(inputLine);
-		System.out.println(parsedInput);
 		
-		switch (parsedInput.getCommand()) {
-			case "monthly_total" :
-				Command command = new MonthlyCommand(parsedInput); 
-				//ajouter description ici???
-				break;
-			case "exit" :
-				return;
-			default :
-				System.out.printf("""
-								  The << %s >> command was not found.
-								  Enter << help >> to have more informations about the available commands.""", parsedInput.getCommand());
+		try {
+			ParseInput parsedInput =  new ParseInput(inputLine);
+			//System.out.println(parsedInput);
+			
+			switch (parsedInput.getCommand()) {
+				case "monthly_total" :
+					Command command = new Monthly_total(parsedInput); 
+					command.execute(allValues);
+					break;
+				case "exit" :
+					this.exit = "exit";
+					return;
+				default :
+					System.out.printf("""
+									  The << %s >> command was not found.
+									  Enter << help >> to have more informations about the available commands.
+									  """, parsedInput.getCommand());
+			}
+		
+		}
+		catch (IllegalArgumentException e) {
+			System.out.println("The command is not valid : " + e);	
+			System.out.println("Enter \"help\" if you want more informations about the available commands, " +
+								"or \"help <command>\" if you want more informations about a command");
 		}
 		
 	}

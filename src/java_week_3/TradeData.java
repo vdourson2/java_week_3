@@ -55,7 +55,7 @@ public class TradeData {
 		return this.year;
 	}
 	
-	public int getMonth() {
+	public String getMonth() {
 		Date date = new Date(this.date);
 		return date.getMonth();
 	}

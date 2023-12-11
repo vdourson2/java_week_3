@@ -18,7 +18,7 @@ public class ParseInput {
 			options.put("country", "All");
 			options.put("commodity", "All");
 			options.put("transport_mode", "All");
-			options.put("measure", "All");
+			options.put("measure", "$");
 		}
 	
 	public ParseInput(String commandLine) throws IllegalArgumentException {
