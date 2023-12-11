@@ -46,12 +46,17 @@ public class Cli {
 		try {
 			ParseInput parsedInput =  new ParseInput(inputLine);
 			//System.out.println(parsedInput);
-			
+			Command command;
 			switch (parsedInput.getCommand()) {
 				case "monthly_total" :
-					Command command = new Monthly_total(parsedInput); 
+					command = new Monthly_total(parsedInput); 
 					command.execute(allValues);
 					break;
+				case "monthly_average" :
+					command = new Monthly_average(parsedInput); 
+					command.execute(allValues);
+					break;
+					
 				case "exit" :
 					this.exit = "exit";
 					return;
