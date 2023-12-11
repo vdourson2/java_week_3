@@ -18,7 +18,6 @@ public class CommandLineTool {
 				cli.treatInput(inputLine);
 			}
 			
-			
 		 } 	
 		 catch (IOException e) {
 			 System.out.println("Failed to read stdin : " + e);

@@ -34,7 +34,9 @@ public class Monthly_total extends MonthlyCommand {
 					--country  			"All" by default.
 					--commodity			"All" by default.
 					--transport_mode	"All" by default.
-					--measure			"All" by default.""";
+					--measure			"All" by default.
+				ex : monthly_total 2015 5 --country China --commodity Fruit 
+				""";
 	}
 	
 	
