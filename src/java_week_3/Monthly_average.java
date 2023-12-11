@@ -27,7 +27,7 @@ public class Monthly_average extends MonthlyCommand {
 		System.out.println(average + " " + super.getOptions().get("measure"));
 	}
 	
-	public static String help() {
+	public static final String help() {
 		return """
 				monthly_average \033[3myear month\033[0m [option \033[3mvalue\033[0m]...
 				Returns the average of the export for a specified month of a specified year.

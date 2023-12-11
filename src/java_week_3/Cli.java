@@ -50,13 +50,13 @@ public class Cli {
 			switch (parsedInput.getCommand()) {
 				case "monthly_total" :
 					command = new Monthly_total(parsedInput); 
-					command.execute(allValues);
 					break;
 				case "monthly_average" :
 					command = new Monthly_average(parsedInput); 
-					command.execute(allValues);
 					break;
-					
+				case "help" :
+					command = new HelpCommand(parsedInput);
+					break;
 				case "exit" :
 					this.exit = "exit";
 					return;
@@ -65,7 +65,9 @@ public class Cli {
 									  The << %s >> command was not found.
 									  Enter << help >> to have more informations about the available commands.
 									  """, parsedInput.getCommand());
+					return;
 			}
+			command.execute(allValues);
 		
 		}
 		catch (IllegalArgumentException e) {
